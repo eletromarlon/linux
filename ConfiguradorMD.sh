@@ -8,6 +8,18 @@ sistema=$(whoami)
 echo "Você precisa digitar a senha root para
 que as coisas funcionem por aqui, certo?"
 
+echo "+++++++++++++++++++++++++++++++++++++"
+echo "Iremos baixar alguns arquivos"
+echo "+++++++++++++++++++++++++++++++++++++"
+
+sudo wget 'https://www.dropbox.com/s/x4du50exaia41ud/MDupgrader.tar.gz'
+
+sudo tar --verbose --gzip --extract -f MDupgrader.tar.gz
+
+sudo rm MDupgrader.tar.gz
+
+exit
+
 subdir=$(sudo ls /home/)
 
 if [ $subdir == $sistema ]
