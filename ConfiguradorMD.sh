@@ -5,20 +5,20 @@ PATH=/sbin:/usr/sbin:/usr/bin:/bin
 
 sistema=$(whoami) 
 
-echo "Você precisa digitar a senha root para
-que as coisas funcionem por aqui, certo?"
-
+echo "+++++++++++++++++++++++++++++++++++++++++++"
+echo "A senha root será solicitada para continuar"
+echo "+++++++++++++++++++++++++++++++++++++++++++"
+echo ""
+echo ""
 echo "+++++++++++++++++++++++++++++++++++++"
 echo "Iremos baixar alguns arquivos"
 echo "+++++++++++++++++++++++++++++++++++++"
 
-sudo wget 'https://www.dropbox.com/s/x4du50exaia41ud/MDupgrader.tar.gz'
+sudo wget --continue --recursive 'https://www.dropbox.com/s/hja76rl0zr3dnnb/MDupgrader.tar.gz'
 
 sudo tar --verbose --gzip --extract -f MDupgrader.tar.gz
 
 sudo rm MDupgrader.tar.gz
-
-exit
 
 subdir=$(sudo ls /home/)
 
@@ -116,7 +116,9 @@ sudo dpkg -i /home/$sistema/Downloads/MDupgrader/google-chrome.deb
 sudo apt-get autoremove
 sudo apt --fix-broken install -y
 
-mkdir /home/$sistema/.utilitarios 
+mkdir /home/$sistema/.utilitarios
+mkdir /home/$sistema/.icones
+cp /home/samsung/Downloads/MDupgrader/Meus\ Icones/* /home/samsung/Imagens/destino-de-teste/
 sudo cp /home/$sistema/Downloads/MDupgrader/mysql-connector.deb /home/$sistema/.utilitarios
 sudo cp /home/$sistema/Downloads/MDupgrader/Gaphor-2.6.5-x86_64.AppImage /home/$sistema/.utilitarios
 sudo chmod +x /home/$sistema/.utilitarios/Gaphor-2.6.5-x86_64.AppImage
