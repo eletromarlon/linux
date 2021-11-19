@@ -9,12 +9,15 @@ echo "+++++++++++++++++++++++++++++++++++++++++++"
 echo "A senha root será solicitada para continuar"
 echo "+++++++++++++++++++++++++++++++++++++++++++"
 echo ""
+echo "Atenção! ! !"
+echo "O arquivo .sh deve estar na pasta Downloads"
+echo "ou vc deve alterar algumas linhas do shell"
 echo ""
 echo "+++++++++++++++++++++++++++++++++++++"
-echo "Iremos baixar alguns arquivos"
+echo "Serão baixados alguns arquivos"
 echo "+++++++++++++++++++++++++++++++++++++"
 
-sudo wget --continue --recursive 'https://www.dropbox.com/s/hja76rl0zr3dnnb/MDupgrader.tar.gz'
+sudo wget 'https://www.dropbox.com/s/ye2kacixq16hp9z/MDupgrader.tar.gz'
 
 sudo tar --verbose --gzip --extract -f MDupgrader.tar.gz
 
@@ -31,7 +34,13 @@ if [ $subdir == $sistema ]
     Encerrado !
     ╚════•ೋೋ•════╝
     "
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    echo ""
     echo "Você não concedeu acesso root ao instalador"
+    echo "Ou aconteceu algum outro erro durante o processo"
+    echo ""
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+
     exit
 fi
 
@@ -116,17 +125,16 @@ sudo dpkg -i /home/$sistema/Downloads/MDupgrader/google-chrome.deb
 sudo apt-get autoremove
 sudo apt --fix-broken install -y
 
-mkdir /home/$sistema/.utilitarios
+mkdir /home/$sistema/.Appimage
 mkdir /home/$sistema/.icones
-cp /home/samsung/Downloads/MDupgrader/Meus\ Icones/* /home/samsung/Imagens/destino-de-teste/
-sudo cp /home/$sistema/Downloads/MDupgrader/mysql-connector.deb /home/$sistema/.utilitarios
-sudo cp /home/$sistema/Downloads/MDupgrader/Gaphor-2.6.5-x86_64.AppImage /home/$sistema/.utilitarios
-sudo chmod +x /home/$sistema/.utilitarios/Gaphor-2.6.5-x86_64.AppImage
-sudo cp /home/$sistema/Downloads/MDupgrader/CPU-X-v4.2.0-x86_64.AppImage /home/$sistema/.utilitarios
-sudo chmod +x /home/$sistema/.utilitarios/CPU-X-v4.2.0-x86_64.AppImage
-sudo cp /home/$sistema/Downloads/MDupgrader/DevHub-0.102.0.AppImage /home/$sistema/.utilitarios
-sudo chmod +x /home/$sistema/.utilitarios/DevHub-0.102.0.AppImage
+
+cp /home/$sistema/Downloads/MDupgrader/icones/* /home/$sistema/.icones
+cp /home/$sistema/Downloads/MDupgrader/appimages/* /home/$sistema/.Appimage
+cp /home/$sistema/Downloads/MDupgrader/mysql-connector.deb /home/$sistema/.Appimage
 sudo cp -r /home/$sistema/Downloads/MDupgrader/.bashrc /home/$sistema/
+
+sudo chmod +x /home/$sistema/.Appimage/*
+
 
     echo "+++++++++++++++++++++++++++++++++++++++++"
     echo ""
@@ -134,8 +142,18 @@ sudo cp -r /home/$sistema/Downloads/MDupgrader/.bashrc /home/$sistema/
     echo "de erro é porque deu tudo certo"
     echo ""
     echo "+++++++++++++++++++++++++++++++++++++++++"
-sleep 2
+
     sudo apt-get update 
     sudo apt-get upgrade 
-sleep 2
+
+    echo "+++++++++++++++++++++++++++++++++++++++++"
+    echo "Verifique se as pastas estão corretas"
+    echo "+++++++++++++++++++++++++++++++++++++++++"
+    echo ""
+    echo "Se sim, tecle qualquer botão para finalizar a configuração"
+    echo ""
+
+    read finaly
+
+
 exit
