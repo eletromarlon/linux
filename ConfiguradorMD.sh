@@ -95,7 +95,9 @@ if [ "/home/$sistema/Downloads/MDupgrader" ]
     sudo apt-get install gitg -y 
     sudo apt-get install gimp -y 
     sudo apt-get install wget -y 
-    sudo apt-get install firefox-esr -y 
+    sudo apt-get install firefox-esr -y
+    sudo apt-get install nodejs -y
+    sudo apt-get install npm -y
     ls -l /home/$sistema/Downloads/MDupgrader
     else
     echo "!!!!!!!!!!!!!!!!!!!!!!!"
@@ -108,6 +110,8 @@ echo ""
 echo "Instalação de Programas essenciais"
 echo ""
 echo "++++++++++++++++++++++++++++++++++"
+
+sudo npm install -g nativefier
 
 sudo chmod +x /home/$sistema/Downloads/MDupgrader/install-reaper.sh
 chmod +x /home/$sistema/Downloads/MDupgrader/netbeansjdk.sh
@@ -127,6 +131,7 @@ sudo apt --fix-broken install -y
 
 mkdir /home/$sistema/.Appimage
 mkdir /home/$sistema/.icones
+mkdir /home/$sistema/.webapps
 
 cp /home/$sistema/Downloads/MDupgrader/icones/* /home/$sistema/.icones
 cp /home/$sistema/Downloads/MDupgrader/appimages/* /home/$sistema/.Appimage
@@ -135,6 +140,27 @@ sudo cp -r /home/$sistema/Downloads/MDupgrader/.bashrc /home/$sistema/
 
 sudo chmod +x /home/$sistema/.Appimage/*
 
+sudo nativefier "https://www.site24x7.com/es/tools/selector-de-codigo-color.html" --name "Seletor-de-Cores" /home/$sistema/.webapps
+
+sudo nativefier "https://ezgif.com" --name "Gif-Maker" /home/$sistema/.webapps
+
+sudo nativefier "https://www.iloveimg.com/pt" --name "Editor-de-Imagens" /home/$sistema/.webapps
+
+sudo nativefier "https://www.szynalski.com/tone-generator/" --name "Gerador-de-Ondas" /home/$sistema/.webapps
+
+sudo nativefier "https://app.creately.com/diagram/nODy6antN4p/edit" --name "Creately" /home/$sistema/.webapps
+
+sudo nativefier "https://cyberzhg.github.io/toolbox/nfa2dfa" --name "Regex-to-NFA" /home/$sistema/.webapps
+
+sudo nativefier "https://visualgo.net/pt" --name "Data-Structure" /home/$sistema/.webapps
+
+sudo nativefier "https://www.ilovepdf.com/pt" --name "IlovePDF" /home/$sistema/.webapps
+
+sudo nativefier "https://icons8.com.br/" --name "Icons8" /home/$sistema/.webapps
+
+sudo nativefier "https://drive.google.com" --name "Drive" /home/$sistema/.webapps
+
+sudo nativefier "https://calendar.google.com" --name "Agenda" /home/$sistema/.webapps
 
     echo "+++++++++++++++++++++++++++++++++++++++++"
     echo ""
