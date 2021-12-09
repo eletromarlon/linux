@@ -3,7 +3,7 @@
 SHELL=bin/sh
 PATH=/sbin:/usr/sbin:/usr/bin:/bin
 
-sistema=$(whoami) 
+sistema=$(whoami)
 
 echo "+++++++++++++++++++++++++++++++++++++++++++"
 echo "A senha root será solicitada para continuar"
@@ -67,43 +67,82 @@ echo " º º º
 "
 echo ""
 echo ""
-echo ""
-if [ "/home/$sistema/Downloads/MDupgrader" ]
+echo "Qual a sua distro?"
+echo "[1 - Debian / 2 - Manjaro]"
+read distro
+    if [ $distro == 1 ]
     then
-    echo "++++++++++++++++++++++++++++++++++"
-    echo "Tudo certo"
-    echo "++++++++++++++++++++++++++++++++++"
-    echo "."
-    echo "."
-    echo "."
-    
-    echo "Loading…"
-    sudo apt-get update 
-    sudo apt-get upgrade 
-    sudo apt-get install kdenlive -y
-    sudo apt-get install codeblocks -y
-    sudo apt-get install vlc -y 
-    sudo apt-get install texmaker -y 
-    sudo apt-get install flameshot -y 
-    sudo apt-get install okular -y 
-    sudo apt-get install steam-launcher -y 
-    sudo apt-get install cheese -y 
-    sudo apt-get install pavucontrol -y
-    sudo apt-get install obs-studio -y 
-    sudo apt-get install xournal -y 
-    sudo apt-get install bash-completion -y 
-    sudo apt-get install gitg -y 
-    sudo apt-get install gimp -y 
-    sudo apt-get install wget -y 
-    sudo apt-get install firefox-esr -y
-    sudo apt-get install nodejs -y
-    sudo apt-get install npm -y
-    ls -l /home/$sistema/Downloads/MDupgrader
+        if [ "/home/$sistema/Downloads/MDupgrader" ]
+            then
+            echo "++++++++++++++++++++++++++++++++++"
+            echo "Instalação para Debian"
+            echo "++++++++++++++++++++++++++++++++++"
+            echo "."
+            echo "."
+            echo "."
+
+            echo "Loading…"
+            sudo apt-get update
+            sudo apt-get upgrade
+            sudo apt-get install kdenlive -y
+            sudo apt-get install codeblocks -y
+            sudo apt-get install vlc -y
+            sudo apt-get install texmaker -y
+            sudo apt-get install flameshot -y
+            sudo apt-get install okular -y
+            sudo apt-get install steam-launcher -y
+            sudo apt-get install cheese -y
+            sudo apt-get install pavucontrol -y
+            sudo apt-get install obs-studio -y
+            sudo apt-get install xournal -y
+            sudo apt-get install bash-completion -y
+            sudo apt-get install gitg -y
+            sudo apt-get install gimp -y
+            sudo apt-get install wget -y
+            sudo apt-get install firefox-esr -y
+            sudo apt-get install nodejs -y
+            sudo apt-get install npm -y
+            sudo apt-get install -y libgconf-2-4 libappindicator3-0.1-cil libc++1 -y
+            ls -l /home/$sistema/Downloads/MDupgrader
+            else
+            echo "!!!!!!!!!!!!!!!!!!!!!!!"
+            echo "Erro nos repositórios"
+            echo "!!!!!!!!!!!!!!!!!!!!!!!"
+        fi
     else
-    echo "!!!!!!!!!!!!!!!!!!!!!!!"
-    echo "Erro nos repositórios"
-    echo "!!!!!!!!!!!!!!!!!!!!!!!"
-fi
+        if [ "/home/$sistema/Downloads/MDupgrader" ]
+            then
+            echo "++++++++++++++++++++++++++++++++++"
+            echo "Instalação para Manjaro"
+            echo "++++++++++++++++++++++++++++++++++"
+            echo "."
+            echo "."
+            echo "."
+
+            echo "Loading…"
+            sudo pacman -Syyu
+            sudo pacman -S kdenlive
+            sudo pacman -S codeblocks
+            sudo pacman -S vlc
+            sudo pacman -S texmaker
+            sudo pacman -S flameshot
+            sudo pacman -S okular
+            sudo pacman -S steam-manjaro
+            sudo pacman -S cheese
+            sudo pacman -S pavucontrol
+            sudo pacman -S obs-studio
+            sudo pacman -S xournal
+            sudo pacman -S gitg
+            sudo pacman -S gimp
+            sudo pacman -S nodejs
+            sudo pacman -S npm
+            sudo pacman -S libgconf-2-4 libappindicator3-0.1-cil libc++1
+            ls -l /home/$sistema/Downloads/MDupgrader
+            else
+            echo "!!!!!!!!!!!!!!!!!!!!!!!"
+            echo "Erro nos repositórios"
+            echo "!!!!!!!!!!!!!!!!!!!!!!!"
+        fi
 
 echo "++++++++++++++++++++++++++++++++++"
 echo ""
@@ -118,16 +157,17 @@ chmod +x /home/$sistema/Downloads/MDupgrader/netbeansjdk.sh
 sudo $sh /home/acer/Downloads/MDupgrader/install-reaper.sh --install ~/.reaper --integrate-desktop --usr-local-bin-symlink --quiet
 sudo $sh /home/$sistema/Downloads/MDupgrader/netbeansjdk.sh
 
-echo "Instalando pacotes .deb"
-
-sudo apt-get install -y libgconf-2-4 libappindicator3-0.1-cil libc++1
-
-sudo dpkg -i /home/$sistema/Downloads/MDupgrader/dbeaver.deb
-sudo dpkg -i /home/$sistema/Downloads/MDupgrader/discord.deb
-sudo dpkg -i /home/$sistema/Downloads/MDupgrader/mysql-workbench.deb
-sudo dpkg -i /home/$sistema/Downloads/MDupgrader/google-chrome.deb 
-sudo apt-get autoremove
-sudo apt --fix-broken install -y
+    if [ $distro == 1 ]
+    then
+        sudo dpkg -i /home/$sistema/Downloads/MDupgrader/dbeaver.deb
+        sudo dpkg -i /home/$sistema/Downloads/MDupgrader/discord.deb
+        sudo dpkg -i /home/$sistema/Downloads/MDupgrader/mysql-workbench.deb
+        sudo dpkg -i /home/$sistema/Downloads/MDupgrader/google-chrome.deb
+        sudo apt-get autoremove
+        sudo apt --fix-broken install -y
+    else
+    echo "Versão não é Debian"
+    fi
 
 mkdir /home/$sistema/.Appimage
 mkdir /home/$sistema/.icones
@@ -162,16 +202,17 @@ sudo nativefier "https://drive.google.com" --name "Drive" /home/$sistema/.webapp
 
 sudo nativefier "https://calendar.google.com" --name "Agenda" /home/$sistema/.webapps
 
+sudo nativefier "https://codepen.io/trending" --name "Codepen" /home/$sistema/.webapps
+
+
     echo "+++++++++++++++++++++++++++++++++++++++++"
     echo ""
     echo "Se chegamos aqui sem nenhuma mensagem"
     echo "de erro é porque deu tudo certo"
     echo ""
     echo "+++++++++++++++++++++++++++++++++++++++++"
-
-    sudo apt-get update 
-    sudo apt-get upgrade 
-
+    echo ""
+    echo ""
     echo "+++++++++++++++++++++++++++++++++++++++++"
     echo "Verifique se as pastas estão corretas"
     echo "+++++++++++++++++++++++++++++++++++++++++"
