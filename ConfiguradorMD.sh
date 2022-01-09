@@ -36,7 +36,7 @@ if [ $subdir == $sistema ]
     "
     echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     echo ""
-    echo "Você não concedeu acesso root ao instalador"
+    echo "Você pode não ter concedido acesso root ao instalador"
     echo "Ou aconteceu algum outro erro durante o processo"
     echo ""
     echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
